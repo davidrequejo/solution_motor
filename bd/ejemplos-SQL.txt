@@ -1,0 +1,149 @@
+
+:::::::::::::::::::::::: ACTUALIZAR FECHAS CON SUS NOMBRES DE: DIA Y MES ::::::::::::::
+
+SET lc_time_names = 'es_ES';
+UPDATE venta as v, venta  as v2
+SET v.name_day= CONCAT(UPPER(LEFT(DAYNAME(v2.fecha_emision),1)),SUBSTR(DAYNAME(v2.fecha_emision),2)), 
+v.name_month=CONCAT(UPPER(LEFT(MONTHNAME(v2.fecha_emision),1)),SUBSTR(MONTHNAME(v2.fecha_emision),2)), 
+v.name_year=YEAR(v2.fecha_emision) WHERE  v.idventa = v2.idventa;
+
+
+:::::::::::::::::::: ACTUALIZA CODIGO DE PRODUCTOS :::::::::::
+UPDATE producto AS p SET tipo = 'PR', codigo = CONCAT('PR', LPAD(idproducto, 5, '0')) WHERE `idcategoria` <> 2;
+
+:::::::::::::::::::: ACTUALIZA DESCUENTO NEW :::::::::::
+UPDATE `venta_detalle` SET `precio_venta_descuento`= precio_venta, `subtotal_no_descuento`= subtotal
+
+:::::::::::::::::::: ACTUALIZA TIPO EN: VENTA_DETALLE :::::::::::
+UPDATE venta_detalle AS vd1
+INNER JOIN venta_detalle AS vd2 ON vd1.idventa_detalle = vd2.idventa_detalle
+INNER JOIN venta AS v ON v.idventa = vd2.idventa
+SET vd1.tipo = CASE v.tipo_comprobante
+    WHEN '01' THEN 'FACTURA'
+    WHEN '03' THEN 'BOLETA'
+    WHEN '07' THEN 'NOTA DE CRÉDITO'
+    WHEN '12' THEN 'TICKET'
+END;
+
+:::::::::::::::::::: ACTUALIZA COBRO EN: VENTA_DETALLE :::::::::::
+UPDATE venta_detalle vd
+INNER JOIN venta v ON v.idventa = vd.idventa
+SET
+  vd.es_cobro = v.es_cobro,
+  vd.periodo_pago = v.periodo_pago,
+  vd.periodo_pago_format = v.periodo_pago_format,
+  vd.periodo_pago_month = v.periodo_pago_month,
+  vd.periodo_pago_year = v.periodo_pago_year
+WHERE v.es_cobro = 'SI';
+
+::::::::::::::::::: POWER BI - VENTAS :::::::::::::::::::::::::::::::
+SELECT v.idventa as v_idventa, v.idpersona_cliente as v_idpersona_cliente, v.iddocumento_relacionado as v_iddocumento_relacionado, v.crear_enviar_sunat as v_crear_enviar_sunat, 
+v.idsunat_c01 as v_idsunat_c01, v.tipo_comprobante as v_tipo_comprobante, v.serie_comprobante as v_serie_comprobante, 
+v.numero_comprobante as v_numero_comprobante, v.fecha_emision as v_fecha_emision, v.name_day as v_name_day, v.name_month as v_name_month, v.name_year as v_name_year, 
+v.periodo_pago as v_periodo_pago, v.periodo_pago_format as v_periodo_pago_format, v.periodo_pago_month as v_periodo_pago_month, v.periodo_pago_year as v_periodo_pago_year, 
+v.impuesto as v_impuesto, v.venta_subtotal as v_venta_subtotal, v.venta_descuento as v_venta_descuento, v.venta_igv as v_venta_igv, v.venta_total as v_venta_total, 
+v.metodo_pago as v_metodo_pago, v.mp_serie_comprobante as v_mp_serie_comprobante, v.mp_comprobante as v_mp_comprobante, v.mp_monto as v_mp_monto, 
+v.venta_credito as v_venta_credito, v.vc_numero_operacion as v_vc_numero_operacion, v.vc_fecha_proximo_pago as v_vc_fecha_proximo_pago, v.total_recibido as v_total_recibido, 
+v.total_vuelto as v_total_vuelto, v.usar_anticipo as v_usar_anticipo, v.ua_monto_disponible as v_ua_monto_disponible, v.ua_monto_usado as v_ua_monto_usado, 
+v.nc_motivo_nota as v_nc_motivo_nota, v.nc_tipo_comprobante as v_nc_tipo_comprobante, v.nc_serie_y_numero as v_nc_serie_y_numero, v.sunat_estado as v_sunat_estado, 
+v.sunat_observacion as v_sunat_observacion, v.sunat_code as v_sunat_code, v.sunat_mensaje as v_sunat_mensaje, v.sunat_hash as v_sunat_hash, v.sunat_error as v_sunat_error, 
+v.observacion_documento as v_observacion_documento, v.estado as v_estado, v.estado_delete as v_estado_delete, 
+CASE v.tipo_comprobante WHEN '07' THEN v.venta_total * -1 ELSE v.venta_total END AS v_venta_total_v2, 
+CASE v.tipo_comprobante WHEN '03' THEN 'BOLETA' WHEN '07' THEN 'NOTA CRED.' ELSE tc.abreviatura END AS v_nombre_tipo_comprobante_v2,
+DATE_FORMAT(v.fecha_emision, '%Y-%m-%d') as v_fecha_emision_format, LEFT(v.periodo_pago_month, 3) as v_periodo_pago_month_v2,  
+tc.abreviatura as v_nombre_tipo_comprobante_v1, CONCAT(pu.nombre_razonsocial, ' ', pu.apellidos_nombrecomercial) as v_user_en_atencion, pu.nombre_razonsocial as v_user_nombre_en_atencion,
+CONCAT(v.serie_comprobante, '-', v.numero_comprobante) as v_serie_numero_comprobante, CONCAT(tc.abreviatura, ' ', v.serie_comprobante, '-', v.numero_comprobante) as v_tipo_serie_numero_comprobante,
+vd.idventa_detalle as vd_idventa_detalle, vd.idventa as vd_idventa, vd.idproducto as vd_idproducto, vd.tipo as vd_tipo, vd.cantidad as vd_cantidad, 
+vd.precio_compra as vd_precio_compra, vd.precio_venta as vd_precio_venta, vd.precio_venta_descuento as vd_precio_venta_descuento, vd.descuento as vd_descuento, 
+vd.descuento_porcentaje as vd_descuento_porcentaje, vd.subtotal as vd_subtotal, CASE v.tipo_comprobante WHEN '07' THEN vd.subtotal * -1 ELSE vd.subtotal END AS vd_subtotal_v2,
+vd.subtotal_no_descuento as vd_subtotal_no_descuento, vd.um_nombre as vd_um_nombre, vd.um_abreviatura as vd_um_abreviatura, vd.es_cobro as vd_es_cobro, vd.periodo_pago as vd_periodo_pago, vd.periodo_pago_format as vd_periodo_pago_format, vd.periodo_pago_month as vd_periodo_pago_month, vd.periodo_pago_year as vd_periodo_pago_year,
+p1.nombre_razonsocial as  pc_nombre_razonsocial, p1.apellidos_nombrecomercial as pc_apellidos_nombrecomercial, p1.tipo_documento as pc_tipo_documento, p1.numero_documento as pc_numero_documento, p1.foto_perfil as pc_foto_perfil,  sc06.abreviatura as pc_nombre_tipo_documento, 
+CASE 
+ WHEN p1.tipo_persona_sunat = 'NATURAL' THEN CONCAT(p1.nombre_razonsocial, ' ', p1.apellidos_nombrecomercial) 
+ WHEN p1.tipo_persona_sunat = 'JURÍDICA' THEN p1.nombre_razonsocial 
+ ELSE '-'
+END AS pc_nombre_completo,
+CONCAT(p2.nombre_razonsocial, ' ', p2.apellidos_nombrecomercial) as pt_nombre_completo,
+pro.idproducto as pro_idproducto, pro.idsunat_unidad_medida as pro_idsunat_unidad_medida, pro.idcategoria as pro_idcategoria, pro.idmarca as pro_idmarca, pro.nombre as pro_nombre_producto, pro.codigo as pro_codigo, pro.codigo_alterno as pro_codigo_alterno, um.nombre AS pro_um_nombre_a, um.abreviatura as pro_um_abreviatura_a, cat.nombre AS pro_categoria, m.nombre AS pro_marca
+
+FROM venta AS v
+INNER JOIN venta_detalle AS vd ON vd.idventa = v.idventa
+INNER JOIN persona_cliente AS pc ON pc.idpersona_cliente = v.idpersona_cliente
+INNER JOIN persona AS p1 ON p1.idpersona = pc.idpersona
+INNER JOIN sunat_c06_doc_identidad as sc06 ON sc06.code_sunat = p1.tipo_documento
+INNER JOIN sunat_c01_tipo_comprobante AS tc ON tc.idtipo_comprobante = v.idsunat_c01
+LEFT JOIN usuario as u ON u.idusuario = v.user_created
+LEFT JOIN persona as pu ON pu.idpersona = u.idpersona
+INNER JOIN persona_trabajador AS pt on pc.idpersona_trabajador= pt.idpersona_trabajador
+INNER JOIN persona as p2 on p2.idpersona = pt.idpersona
+INNER JOIN producto AS pro ON pro.idproducto = vd.idproducto
+INNER JOIN sunat_unidad_medida AS um ON um.idsunat_unidad_medida = pro.idsunat_unidad_medida
+INNER JOIN categoria AS cat ON pro.idcategoria = cat.idcategoria
+INNER JOIN marca AS m ON pro.idmarca = m.idmarca
+WHERE v.estado = 1 AND v.estado_delete = 1 
+ORDER BY v.fecha_emision DESC, p1.nombre_razonsocial ASC;
+
+::::::::::::: ACTUALIZAR DATA :::::::::::::::::::::::::
+SELECT vd.* FROM venta_detalle AS vd inner 
+JOIN venta as v ON v.idventa = vd.idventa AND v.estado = '1' AND v.sunat_estado in ('ACEPTADA', 'POR ENVIAR') 
+where vd.es_cobro = 'SI' AND vd.cantidad > 1 ORDER BY vd.idventa ASC;
+
+::::::::::::: ACTUALIZAR DATA EN: venta_metodo_pago :::::::::::::::::::::::::
+INSERT INTO venta_metodo_pago (idventa, metodo_pago,  codigo_voucher, comprobante, monto )
+SELECT idventa, metodo_pago, mp_serie_comprobante, mp_comprobante, mp_monto
+FROM venta
+WHERE metodo_pago IS NOT NULL and metodo_pago <> '';
+
+::::::::::::: ACTUALIZAR DATA EN: mes de pago :::::::::::::::::::::::::
+UPDATE venta_detalle
+SET periodo_pago_format = DATE_FORMAT(periodo_pago_format, '2024-%m-%d'), periodo_pago = DATE_FORMAT(periodo_pago_format, '2024-%m'), periodo_pago_year = '2024'
+WHERE  idventa =  2233
+
+
+----------------- caja 
+
+
+
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    rol ENUM('admin', 'cajero') DEFAULT 'cajero',
+    activo BOOLEAN DEFAULT TRUE,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE cajas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    descripcion TEXT,
+    activo BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE caja_sesiones (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    caja_id INT NOT NULL,
+    usuario_apertura_id INT NOT NULL,
+    usuario_cierre_id INT,
+    fecha_apertura DATETIME NOT NULL,
+    fecha_cierre DATETIME,
+    monto_inicial DECIMAL(10,2) NOT NULL,
+    monto_final DECIMAL(10,2),
+    estado ENUM('abierta', 'cerrada') DEFAULT 'abierta',
+    FOREIGN KEY (caja_id) REFERENCES cajas(id),
+    FOREIGN KEY (usuario_apertura_id) REFERENCES usuarios(id),
+    FOREIGN KEY (usuario_cierre_id) REFERENCES usuarios(id)
+);
+
+CREATE TABLE caja_movimientos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    sesion_id INT NOT NULL,
+    tipo ENUM('ingreso', 'egreso') NOT NULL,
+    descripcion TEXT,
+    monto DECIMAL(10,2) NOT NULL,
+    creado_por INT NOT NULL,
+    fecha_movimiento DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (sesion_id) REFERENCES caja_sesiones(id),
+    FOREIGN KEY (creado_por) REFERENCES usuarios(id)
+);

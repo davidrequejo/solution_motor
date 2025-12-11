@@ -1,0 +1,8 @@
+id  | CODIGO			|	MENSAJE
+====|===================|=======================================
+1   | estado_1 			| 	Registro recuperado de papelera
+2   | estado_0			| 	Registro enviado a papelera
+3   | estado_delete_1	| 	Registro recuperado de permanentemente
+4   | estado_delete_0	| 	Registro eliminado permanentemente
+5   | created_at		| 	Registro creado
+6   | updated_at		| 	Registro actualizado
