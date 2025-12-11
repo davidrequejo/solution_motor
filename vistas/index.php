@@ -7,7 +7,7 @@
             $link_host = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'].'/vistas/login.php?file='.$file;
         }else{
             if ($tipo == 'local') {
-                $link_host = "http://localhost/libreria_sistema/vistas/login.php?file=".$file;
+                $link_host = "http://localhost/solution_motor/vistas/login.php?file=".$file;
             }            
         }
         return $link_host;

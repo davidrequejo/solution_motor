@@ -1,5 +1,5 @@
 <?php
-$scheme_host  =  ($_SERVER['HTTP_HOST'] == 'localhost' ? 'http://localhost/libreria_sistema/' :  $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/');
+$scheme_host  =  ($_SERVER['HTTP_HOST'] == 'localhost' ? 'http://localhost/solution_motor/' :  $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/');
 ?>
 
   <!-- Google tag (gtag.js) -->

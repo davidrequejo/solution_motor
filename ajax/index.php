@@ -20,7 +20,7 @@ function enrutamiento($tipo, $file){
     $link_host = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] . '/vistas/login.php?file=' . $file;
   } else {
     if ($tipo == 'local') {
-      $link_host = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] ."/libreria_sistema/vistas/login.php?file=" . $file;
+      $link_host = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'] ."/solution_motor/vistas/login.php?file=" . $file;
     }
   }
   return $link_host;

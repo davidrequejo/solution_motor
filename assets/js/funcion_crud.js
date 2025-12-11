@@ -547,10 +547,10 @@ function ver_errores(e) {
     // }).then((result) => {
     //   if (result.isConfirmed) {
     //     Swal.fire('Saliendo...', '<i class="fas fa-spinner fa-pulse"></i> Redireccionando...', 'success');
-    //     window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/`:window.location.origin}`;
+    //     window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/`:window.location.origin}`;
     //   } else {
     //     Swal.fire('Cerrando sesion', '<i class="fas fa-spinner fa-pulse"></i> De igual manera vamos a cerrar la sesión, jijijiji...', 'success');
-    //     window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/`:window.location.origin}`;
+    //     window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/`:window.location.origin}`;
     //   }
     // });
     var foto_perfil_login =  DocExist(`assets/modulo/persona/perfil/${localStorage.getItem("nube_foto_perfil")}`) == 200 ? localStorage.getItem("nube_foto_perfil") : 'no-perfil.jpg' ;
@@ -609,7 +609,7 @@ function ver_errores(e) {
         setTimeout(() => { location.reload(); }, 1000);// Recarga la página actual
       } else {
         Swal.fire('Cerrando sesion', '<i class="fas fa-spinner fa-pulse"></i> De igual manera vamos a cerrar la sesión, jijijiji...', 'success');
-        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/`:window.location.origin}`;    
+        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/`:window.location.origin}`;    
       }
     });  
 
@@ -637,9 +637,9 @@ function ver_errores(e) {
       cancelButtonAriaLabel: 'Thumbs down'
     }).then((result) => {
       if (result.isConfirmed) {        
-        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/vistas/escritorio.php`:window.location.origin+'/vistas/escritorio.php'}`;
+        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/vistas/escritorio.php`:window.location.origin+'/vistas/escritorio.php'}`;
       } else {
-        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/vistas/escritorio.php`:window.location.origin+'/vistas/escritorio.php'}`;
+        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/vistas/escritorio.php`:window.location.origin+'/vistas/escritorio.php'}`;
       }
     });
   

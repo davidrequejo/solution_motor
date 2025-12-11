@@ -779,8 +779,8 @@ function doc_view_extencion(filename, url_carpeta='',  width='50%', height='auto
     host =  `${url_carpeta}` ;
     ruta = host;
   } else {
-    ruta =  `${window.location.origin}/libreria_sistema/${url_carpeta}/${filename}`;     
-    host = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/libreria_sistema/${url_carpeta}/${filename}` : `${window.location.origin}/${url_carpeta}/${filename}` ;    
+    ruta =  `${window.location.origin}/solution_motor/${url_carpeta}/${filename}`;     
+    host = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/solution_motor/${url_carpeta}/${filename}` : `${window.location.origin}/${url_carpeta}/${filename}` ;    
   }  
   
   // cargamos la imagen adecuada par el archivo
@@ -809,7 +809,7 @@ function doc_view_download_expand(filename, ruta='', nombre_decarga='', width='5
   var html = ''; var extencion = '';
   var expand_disabled = '';
 
-  var ruta_file = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/libreria_sistema/${ruta}/${filename}` : `${window.location.origin}/${ruta}/${filename}` ;
+  var ruta_file = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/solution_motor/${ruta}/${filename}` : `${window.location.origin}/${ruta}/${filename}` ;
  
   // cargamos la imagen adecuada par el archivo
   if ( UrlExists(ruta_file) != 200 ) { console.log('no existe');
@@ -1236,7 +1236,7 @@ function UrlExists(url) {
 
 function DocExist(url) {  
   
-  var host = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/libreria_sistema/${url}` : `${window.location.origin}/${url}`;
+  var host = window.location.host == 'localhost' || es_numero(parseFloat(window.location.host)) == true ? `${window.location.origin}/solution_motor/${url}` : `${window.location.origin}/${url}`;
   
   var http = new XMLHttpRequest();
   http.open("HEAD", host, false);

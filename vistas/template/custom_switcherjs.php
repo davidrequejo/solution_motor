@@ -65,10 +65,10 @@
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire('Saliendo...', '<i class="fas fa-spinner fa-pulse"></i> Redireccionando...', 'success');
-        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/vistas/`:window.location.origin}/vistas/`;
+        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/vistas/`:window.location.origin}/vistas/`;
       } else {
         Swal.fire('Cerrando sesion', '<i class="fas fa-spinner fa-pulse"></i> De igual manera vamos a cerrar la sesión, jijijiji...', 'success');
-        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/libreria_sistema/vistas/`:window.location.origin}/vistas/`;
+        window.location.href = `${window.location.host =='localhost' || es_numero(parseFloat(window.location.host)) == true ?`${window.location.origin}/solution_motor/vistas/`:window.location.origin}/vistas/`;
       }
     });
   </script>
