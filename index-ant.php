@@ -17,7 +17,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="es">
 
-  <title> Inicio | Libreria sistema </title>
+  <title> Inicio solution motors </title>
 
   <meta name="description" content="Proveedor de servicios de internet de alta velocidad en Perú. Ofrecemos conexiones rápidas y confiables para hogares y empresas. ¡Contáctanos para obtener más información!">
   <meta name="keywords" content="brartnet, tocache, internet tocache, internet, proveedor de internet, servicios de internet, alta velocidad, conexiones de internet, internet en Perú">

@@ -19,23 +19,23 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta http-equiv="Content-Language" content="es">
 
-  <title> Login | Libreria sistema </title>  
+  <title> Login | solution motors </title>  
 
-  <meta name="description" content="Novedades D&S: Tu tienda de útiles escolares, artículos para piñatas, pelotas, guitarritas de plástico y más. Encuentra todo para tus fiestas y escuela en un solo lugar. ¡Compra ahora y prepara celebraciones inolvidables!">
-  <meta name="keywords" content="Novedades D&S, útiles escolares, artículos para piñatas, pelotas, guitarritas de plástico, fiestas, cumpleaños, juguetes, tienda de fiestas, material escolar, productos para escuela">
+  <meta name="description" content="solution motors: Tu tienda de útiles escolares, artículos para piñatas, pelotas, guitarritas de plástico y más. Encuentra todo para tus fiestas y escuela en un solo lugar. ¡Compra ahora y prepara celebraciones inolvidables!">
+  <meta name="keywords" content="solution motors, útiles escolares, artículos para piñatas, pelotas, guitarritas de plástico, fiestas, cumpleaños, juguetes, tienda de fiestas, material escolar, productos para escuela">
   <meta name="author" content="JDL TECNOLOGY SAC">
   <meta name="robots" content="index, follow">
   <!-- FACEBOOK -->
-  <meta property="og:title" content="Novedades D&S - Útiles escolares y artículos para fiestas">
-  <meta property="og:description" content="Descubre todo en útiles escolares, artículos para piñatas, pelotas y más en Novedades D&S. ¡Prepara las mejores fiestas y actividades escolares con nosotros!">
-  <meta property="og:image" content="https://novedadesdys.jdl.pe/assets/images/brand-logos/desktop-white.png">
+  <meta property="og:title" content="solution motors - Útiles escolares y artículos para fiestas">
+  <meta property="og:description" content="Descubre todo en útiles escolares, artículos para piñatas, pelotas y más en solution motors. ¡Prepara las mejores fiestas y actividades escolares con nosotros!">
+  <meta property="og:image" content="https://novedadesdys.jdl.pe/assets/images/brand-logos/toggle-white-2.png">
   <meta property="og:url" content="https://novedadesdys.jdl.pe">
   <!-- TWITTER -->
   <!-- <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@nombre_de_usuario_de_twitter"> -->
-  <meta name="twitter:title" content="Novedades D&S - Útiles escolares y artículos para fiestas">
-  <meta name="twitter:description" content="Encuentra útiles escolares, artículos para piñatas, pelotas y guitarritas de plástico en Novedades D&S. Todo para tus celebraciones y escuela.">
-  <meta name="twitter:image" content="https://novedadesdys.jdl.pe/assets/images/brand-logos/desktop-white.png">
+  <meta name="twitter:title" content="solution motors - Útiles escolares y artículos para fiestas">
+  <meta name="twitter:description" content="Encuentra útiles escolares, artículos para piñatas, pelotas y guitarritas de plástico en solution motors. Todo para tus celebraciones y escuela.">
+  <meta name="twitter:image" content="https://novedadesdys.jdl.pe/assets/images/brand-logos/toggle-white-2.png">
 
   <script type="application/ld+json">
     {
@@ -44,7 +44,7 @@
     "name": "Novedades D&C",
     "url": "https://novedadesdys.jdl.pe",
     "description": "Tienda especializada en útiles escolares, artículos para piñatas, pelotas, guitarritas de plástico y más. Todo para tus fiestas y escuela en un solo lugar.",
-    "logo": "https://novedadesdys.jdl.pe/assets/images/brand-logos/desktop-white.png",
+    "logo": "https://novedadesdys.jdl.pe/assets/images/brand-logos/toggle-white-2.png",
     "sameAs": [
       "https://www.facebook.com/novedadesdys",
       "https://www.instagram.com/novedadesdys"
@@ -139,7 +139,7 @@
       <div class="js-video-bg d-none d-md-block position-absolute w-100 h-100"
            data-hs-video-bg-options='{
              "type": "you-tube",
-             "videoId": "YLxcwuBBzLc",
+             "videoId": "Y1g1jnymAS0",
              "ratio": 0.65
            }'>
       </div>

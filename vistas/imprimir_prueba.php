@@ -170,7 +170,7 @@
                       </tr>
                       <tr align="center">
                           <td style="font-size: 14px">
-                              .::<strong>NOVEDADES D&S </strong>
+                              .::<strong>solution motors </strong>
                               ::.
                           </td>
                       </tr>
